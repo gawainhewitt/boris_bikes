@@ -1,8 +1,6 @@
 require_relative './bike.rb'
 
 class DockingStation 
-  attr_reader :stored_bikes
-
   def initialize
     @stored_bikes = []
   end
@@ -16,7 +14,16 @@ class DockingStation
   end
 
   def dock(bike)
-    fail 'dock full' if @stored_bikes.length >= 20
-    @stored_bikes << bike
+    !@stored_bikes.full? << bike
+  end
+
+  private
+
+  def full?()
+    if @stored_bikes.length >= 20
+      true
+    else
+      false
+    end
   end
 end
