@@ -55,8 +55,6 @@ describe DockingStation do
     end
   end
 
-  
-
 end
 
 #I want to be able to specify a larger capacity when necessary.

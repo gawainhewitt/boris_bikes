@@ -1,6 +1,6 @@
 require_relative './bike.rb'
 
-class DockingStation 
+class DockingStation (number_of_bikes = DEFAULT_CAPACITY)
 DEFAULT_CAPACITY = 20
   def initialize
     @stored_bikes = []
