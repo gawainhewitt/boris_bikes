@@ -44,9 +44,19 @@ describe DockingStation do
       end
       expect{station.dock(Bike.new)}.to raise_error 'dock full'
     end
+
+    it 'allows custom size when creating DockingStation' do
+      number_of_bikes = 30
+      station = DockingStation.new(number_of_bikes)
+      number_of_bikes.times do
+        station.dock Bike.new
+      end
+      expect{station.dock(Bike.new)}.to raise_error 'dock full'
+    end
   end
+
+  
 
 end
 
-#I'd like docking stations not to release 
-# bikes when there are none available.
+#I want to be able to specify a larger capacity when necessary.
