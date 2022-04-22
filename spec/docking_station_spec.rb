@@ -47,7 +47,8 @@ describe DockingStation do
 
     it 'allows custom size when creating DockingStation' do
       number_of_bikes = 30
-      station = DockingStation.new(number_of_bikes)
+      station = DockingStation.new
+      station.capacity = number_of_bikes
       number_of_bikes.times do
         station.dock Bike.new
       end

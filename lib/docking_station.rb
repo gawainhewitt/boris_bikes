@@ -1,9 +1,12 @@
 require_relative './bike.rb'
 
-class DockingStation (number_of_bikes = DEFAULT_CAPACITY)
-DEFAULT_CAPACITY = 20
+class DockingStation
+  attr_writer :capacity
+  DEFAULT_CAPACITY = 20
+
   def initialize
     @stored_bikes = []
+    @capacity = DEFAULT_CAPACITY
   end
 
   def release_bike
@@ -19,7 +22,7 @@ DEFAULT_CAPACITY = 20
   private
 
   def full?
-    @stored_bikes.length >= DEFAULT_CAPACITY
+    @stored_bikes.length >= @capacity
   end
 
   def empty?
