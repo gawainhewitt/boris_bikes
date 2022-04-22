@@ -20,14 +20,14 @@ describe DockingStation do
     expect(station.dock(bike)).to eq([bike])
   end
 
-  xit { is_expected.to respond_to(:stored_bikes) } #unit test
+  # xit { is_expected.to respond_to(:stored_bikes) } #unit test
 
-  xit 'Can see a bike that has been docked' do # feature test
-    station = DockingStation.new
-    bike = Bike.new
-    station.dock(bike)
-    expect(station.stored_bikes).to eq([bike])
-  end
+  # xit 'Can see a bike that has been docked' do # feature test
+  #   station = DockingStation.new
+  #   bike = Bike.new
+  #   station.dock(bike)
+  #   expect(station.stored_bikes).to eq([bike])
+  # end
   
   describe '#release_bike' do
     it 'raises an error when there are no bikes available' do
@@ -39,7 +39,9 @@ describe DockingStation do
   describe '#dock' do
     it 'raises an error when dock is full' do
       station = DockingStation.new
-      20.times {station.dock(Bike.new)}
+      DockingStation::DEFAULT_CAPACITY.times do
+        station.dock Bike.new
+      end
       expect{station.dock(Bike.new)}.to raise_error 'dock full'
     end
   end
